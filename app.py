@@ -10,7 +10,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 # Start Flask ====================================================================================================
 
 app = Flask(__name__)
-app.secret_key = 'my-secret-key' #secrets.token_hex(16)
+app.secret_key = secrets.token_hex(16)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Main ===========================================================================================================
