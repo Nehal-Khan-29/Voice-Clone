@@ -6,12 +6,15 @@ import os
 
 UPLOAD_FOLDER = os.path.join('static', 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+MODEL_FOLDER = os.path.join('static', 'models')
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Start Flask ====================================================================================================
 
 app = Flask(__name__)
 app.secret_key = 'your-very-secret-key'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = MODEL_FOLDER
 
 # Main ===========================================================================================================
 
