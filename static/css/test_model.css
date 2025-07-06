@@ -107,7 +107,7 @@ a{
 
 .flash {
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border-radius: 5px;
 }
 
@@ -119,6 +119,11 @@ a{
 .flash.success {
     background-color: #d4edda;
     color: #155724;
+}
+
+.flash.info {
+    background-color: #bdd5f8;
+    color: #153057;
 }
 
 #flash-messages:empty {

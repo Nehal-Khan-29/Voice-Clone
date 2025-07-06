@@ -96,16 +96,18 @@ document.getElementById('recordForm').addEventListener('submit', async function 
 
     recordings.forEach((blob, idx) => {
         if (blob) {
-            formData.append('audio' + idx , blob, `voice_${idx + 1}.wav`);
+            formData.append('audio' + idx , blob, `voice_${idx}.wav`);
         }
     });
 
     const response = await fetch("/training", {
-        method: "POST",
-        body: formData
+    method: "POST",
+    body: formData
     });
 
-    if (response.redirected) {
-        window.location.href = response.url;
+    const data = await response.json();
+    if (data.redirect) {
+        window.location.href = data.redirect;
     }
+
 });
