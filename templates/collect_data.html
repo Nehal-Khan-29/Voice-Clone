@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/collect_data.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    
+    <title>Voice Clone - Training</title>
+</head>
+
+<body>
+
+    <form action="{{url_for('collect_data')}}" id="recordForm" method="POST">
+
+        <div class="box">
+
+            <h2>Collect Voice Data</h2>
+
+            <div class="box2">
+                <div class='mini'>
+                    <div class="text_to_read"><b>Test to read:</b><i>Aa</i></div>
+                    <div class="mini2">
+                        <button class="fas fa-microphone" id="startBtn"></button>
+                        <button class="fas fa-stop" id="stopBtn" disabled></button>
+                        <audio id="audioPlayback" controls></audio>
+                    </div>
+                </div>
+                <div class='mini'>
+                    <div class="text_to_read"><b>Test to read:</b><i>Ee</i></div>
+                    <div class="mini2">
+                        <button class="fas fa-microphone" id="startBtn"></button>
+                        <button class="fas fa-stop" id="stopBtn" disabled></button>
+                        <audio id="audioPlayback" controls></audio>
+                    </div>
+                </div>
+                <div class='mini'>
+                    <div class="text_to_read"><b>Test to read:</b><i>Ii</i></div>
+                    <div class="mini2">
+                        <button class="fas fa-microphone" id="startBtn"></button>
+                        <button class="fas fa-stop" id="stopBtn" disabled></button>
+                        <audio id="audioPlayback" controls></audio>
+                    </div>
+                </div>
+                <div class='mini'>
+                    <div class="text_to_read"><b>Test to read:</b><i>Oo</i></div>
+                    <div class="mini2">
+                        <button class="fas fa-microphone" id="startBtn"></button>
+                        <button class="fas fa-stop" id="stopBtn" disabled></button>
+                        <audio id="audioPlayback" controls></audio>
+                    </div>
+                </div>
+                <div class='mini'>
+                    <div class="text_to_read"><b>Test to read:</b><i>Uu</i></div>
+                    <div class="mini2">
+                        <button class="fas fa-microphone" id="startBtn"></button>
+                        <button class="fas fa-stop" id="stopBtn" disabled></button>
+                        <audio id="audioPlayback" controls></audio>
+                    </div>
+                </div>
+            </div>
+
+            <input class="submit" type="submit" value="Train Dataset">
+            
+            <div class="already">
+                Already have a model? <a href="{{url_for('test_model')}}"> Use it</a>
+            </div>
+
+        </div>
+
+    </form>
+    
+    <script src="{{ url_for('static', filename='js/take_voice.js') }}"></script>
+</body>
+</html>

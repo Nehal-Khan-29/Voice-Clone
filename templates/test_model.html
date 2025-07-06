@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/test_model.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    
+    <title>Voice Clone - Testing</title>
+</head>
+
+<body>
+
+    <form action="{{url_for('collect_data')}}" method="POST">
+
+        <div class="box">
+
+            <h2>Test Data</h2>
+
+            <div class="choose_model">
+                <b>Choose Voice Model:</b>
+                <input type="file" name="myfile">
+            </div>
+
+            <textarea></textarea>
+
+            <input class="submit" type="submit" value="Clone">
+
+            <div class="already">
+                Don't have a model? <a href="{{url_for('collect_data')}}">Create new </a>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div id="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+        </div>
+
+    </form>
+    
+    <script src="{{ url_for('static', filename='js/flash.js') }}"></script>
+</body>
+</html>
