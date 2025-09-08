@@ -1,3 +1,3 @@
 # Voice-Clone
-Voice Cloning using less phenetics 
+Voice Cloning using less phonetics 
 
