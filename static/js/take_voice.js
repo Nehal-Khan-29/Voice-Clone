@@ -94,9 +94,13 @@ document.getElementById('recordForm').addEventListener('submit', async function 
     const recordings = window.getRecordings();
     const formData = new FormData();
 
+    const userName = document.querySelector("input[name='user_name']").value;
+    formData.append("user_name", userName);
+
+
     recordings.forEach((blob, idx) => {
         if (blob) {
-            formData.append('audio' + idx , blob, `voice_${idx}.wav`);
+            formData.append('audio' + idx , blob, `voice_${idx + 1}.wav`);
         }
     });
 
@@ -111,3 +115,5 @@ document.getElementById('recordForm').addEventListener('submit', async function 
     }
 
 });
+
+
