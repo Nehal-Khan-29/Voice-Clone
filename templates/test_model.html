@@ -21,10 +21,30 @@
 
             <div class="choose_model">
                 <b>Choose Voice Model:</b>
-                <input type="file" name="myfile">
+                <b>
+                    <select name="selected_model">
+                        {% for model in models %}
+                            <option value="{{ model }}">{{ model }}</option>
+                        {% endfor %}
+                    </select>
+                </b>
             </div>
 
-            <textarea placeholder="Write something to test"></textarea>
+            <textarea name="text_to_clone" placeholder="Write something to test"></textarea>
+
+            <audio controls>
+                <source src="{{output_file}}" type="audio/wav">
+            </audio>
+
+            <!-- {% if output_file %}
+                <div class="output-section">
+                    <h3>Cloned Voice Output:</h3>
+                    <audio controls>
+                        <source src="{{ output_file }}" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            {% endif %} -->
 
             <input class="submit" type="submit" value="Clone">
 

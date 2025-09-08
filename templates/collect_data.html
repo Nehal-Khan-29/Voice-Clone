@@ -3,257 +3,83 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/collect_data.css') }}">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-    
     <title>Voice Clone - Training</title>
 </head>
 
 <body>
-
-    <form action="{{url_for('collect_data')}}" id="recordForm" method="POST">
-
+    <form action="{{ url_for('collect_data') }}" id="recordForm" method="POST">
         <div class="box">
-
             <h2>Collect Voice Data</h2>
 
             <div class="box2">
-                <!-- Vowels -->
-                <b>Vowels</b>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>A  (as in 'father')</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>E  (as in 'bed')</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>I  (as in 'bit')</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>O  (as in 'hot')</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>U  (as in 'put')</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Oo (as in 'food')</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
+                {% set phonemes = [
+                    "AA (as in father)",
+                    "AE (as in cat)",
+                    "AH (as in cup)",
+                    "AO (as in caught)",
+                    "AW (as in now)",
+                    "AY (as in my)",
+                    "B (as in bat)",
+                    "CH (as in chin)",
+                    "D (as in dog)",
+                    "DH (as in this)",
+                    "EH (as in bed)",
+                    "ER (as in bird)",
+                    "EY (as in they)",
+                    "F (as in fun)",
+                    "G (as in go)",
+                    "HH (as in hat)",
+                    "IH (as in bit)",
+                    "IY (as in see)",
+                    "JH (as in just)",
+                    "K (as in cat)",
+                    "L (as in leg)",
+                    "M (as in man)",
+                    "N (as in net)",
+                    "NG (as in sing)",
+                    "OW (as in go)",
+                    "OY (as in boy)",
+                    "P (as in pet)",
+                    "R (as in red)",
+                    "S (as in sun)",
+                    "SH (as in she)",
+                    "T (as in top)",
+                    "TH (as in thin)",
+                    "UH (as in book)",
+                    "UW (as in food)",
+                    "V (as in van)",
+                    "W (as in wet)",
+                    "Y (as in yes)",
+                    "Z (as in zoo)",
+                    "ZH (as in measure)"
+                ] %}
 
-                <!-- Consonants -->
-                 <b>Consonants</b>
+                {% for text in phonemes %}
                 <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Ka</i></div>
+                    <div class="text_to_read"><b>Text to read:</b> <i>{{ text }}</i></div>
                     <div class="mini2">
                         <button class="fas fa-microphone" id="startBtn"></button>
                         <button class="fas fa-stop" id="stopBtn" disabled></button>
                         <audio id="audioPlayback" controls></audio>
                     </div>
                 </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Kha</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Ga</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Cha</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Ja</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Ta</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Da</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Pa</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Ma</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>La</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Ra</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Na</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-
-                <!-- Diphthongs -->
-                 <b>Diphthongs</b>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Ai (as in 'high')</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Au (as in 'how')</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Ei (as in 'day')</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Oi (as in 'boy')</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-
-                <!-- English Sentences -->
-                 <b>English Sentences</b>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>The quick brown fox jumps over the lazy dog.</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>She sells sea shells by the seashore.</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Hello, my name is Nehal. I love working with AI.</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-                <div class='mini'>
-                    <div class="text_to_read"><b>Test to read:</b><i>Can you hear my voice clearly in this sentence?</i></div>
-                    <div class="mini2">
-                        <button class="fas fa-microphone" id="startBtn"></button>
-                        <button class="fas fa-stop" id="stopBtn" disabled></button>
-                        <audio id="audioPlayback" controls></audio>
-                    </div>
-                </div>
-
+                {% endfor %}
             </div>
+
+            <input class="user_name" type="text" name="user_name" placeholder="Enter your name" required>
 
             <input class="submit" type="submit" value="Train Dataset">
-            
+
             <div class="already">
-                Already have a model? <a href="{{url_for('test_model')}}"> Use it</a>
+                Already have a model? <a href="{{ url_for('test_model') }}">Use it</a>
             </div>
-
         </div>
-
     </form>
-    
+
     <script src="{{ url_for('static', filename='js/take_voice.js') }}"></script>
 </body>
 </html>
